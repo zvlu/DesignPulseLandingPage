@@ -180,7 +180,7 @@ const FAQPage: React.FC = () => {
               Our team is ready to help you with any questions you might have about our services.
             </p>
             <Link
-              to="/contact"
+              to="/Contact"
               className="inline-flex items-center px-6 py-3 bg-white text-[#003366] rounded-lg font-medium hover:bg-gray-100 transition-colors"
             >
               Contact Us Now

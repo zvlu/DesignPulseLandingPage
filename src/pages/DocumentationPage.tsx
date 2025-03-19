@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Code, Settings, ArrowRight, CheckCircle, HelpCircle, Zap } from 'lucide-react';
 
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []); // Empty dependency array ensures it runs only on mount
+
 const DocumentationPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('getting-started');
 

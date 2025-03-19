@@ -11,9 +11,12 @@ const ContactPage: React.FC = () => {
     company: '',
     message: '',
   });
+
+  // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []); // Empty dependency array ensures it runs only on mount
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
