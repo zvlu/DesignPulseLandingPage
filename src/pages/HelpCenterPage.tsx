@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HelpCircle, Search, Mail, Phone, MessageSquare, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
+
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []); // Empty dependency array ensures it runs only on mount
 
 const HelpCenterPage: React.FC = () => {
   const [openQuestion, setOpenQuestion] = useState<string | null>('start-project');
