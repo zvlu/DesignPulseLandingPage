@@ -13,6 +13,9 @@ import {
   ChevronUp,
 } from 'lucide-react';
 
+// Import the SVG logo from the root folder
+import DesignPulseLogo from '/DesignPulseStudio.svg'; // Adjust path based on your setup
+
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
@@ -67,16 +70,16 @@ const Navbar: React.FC = () => {
     <header className="bg-white shadow-md shadow-gray-100/50 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Updated with larger size */}
+          {/* Logo */}
           <NavLink
             to="/"
             className="flex items-center space-x-2"
             onClick={closeMenu}
           >
             <img
-              src="/DesignPulseLogo.jpg"
+              src={DesignPulseLogo}
               alt="DesignPulse Studio Logo"
-              className="h-36 w-36" // Increased from h-7 w-7 to h-12 w-12
+              className="h-28 w-28" // Your current size
             />
             <span
               className="text-xl font-semibold text-gray-900 tracking-tight"
@@ -143,10 +146,10 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA - Links to Contact Page */}
           <div className="hidden md:block">
             <Link
-              to="/contact"
+              to="/contact" // Already set to contact page
               className="inline-flex items-center px-4 py-2 bg-gray-800 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors duration-200 shadow-sm"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
@@ -227,9 +230,10 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
+            {/* Mobile CTA - Links to Contact Page */}
             <div className="pt-4">
               <Link
-                to="/contact"
+                to="/contact" // Already set to contact page
                 className="block w-full text-center py-2 bg-gray-800 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors duration-200"
                 onClick={closeMenu}
                 style={{ fontFamily: 'Poppins, sans-serif' }}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser'; // Import EmailJS
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,16 +19,34 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send the form data to your backend
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      message: '',
-    });
+
+    // EmailJS configuration
+    const serviceID = 'service_sllb5ap'; // Replace with your EmailJS Service ID
+    const templateID = 'template_iotur0d'; // Replace with your EmailJS Template ID
+    const userID = 'tCbIgYuoG2E3RcDwT'; // Replace with your EmailJS User ID
+
+    // Send email using EmailJS
+    emailjs.send(serviceID, templateID, {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      message: formData.message,
+    }, userID)
+      .then(() => {
+        alert('Thank you for your message! We will get back to you soon.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+        });
+      })
+      .catch((error) => {
+        console.error('Failed to send email:', error);
+        alert('Something went wrong. Please try again later.');
+      });
   };
 
   return (
@@ -60,7 +79,7 @@ const ContactPage: React.FC = () => {
                 Our friendly team is here to help.
               </p>
               <a href="mailto:info@designpulse.com" className="text-primary-600 font-medium hover:text-primary-700">
-                info@designpulse.com
+                zvluwork@gmail.com
               </a>
             </div>
 
@@ -85,10 +104,10 @@ const ContactPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Visit Us</h3>
               <p className="text-gray-600 mb-4">
-                Come say hello at our office.
+                
               </p>
               <p className="text-primary-600 font-medium">
-                47 Lovell Ave, Windsor, CT
+                Connecticut
               </p>
             </div>
           </div>

@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+
+// Import the SVG logo from the root folder
+import DesignPulseLogo from '/DesignPulseStudio.svg'; // Adjust path based on your setup
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
       <div className="container py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
-          {/* Company Info */}
+          {/* Company Info - Updated with SVG logo */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Zap className="h-6 w-6 text-primary-600" />
+              <img
+                src={DesignPulseLogo}
+                alt="DesignPulse Studio Logo"
+                className="h-16 w-16" // Set to 64px for readable size
+              />
               <span className="text-xl font-bold text-gray-900">DesignPulse Studio</span>
             </div>
             <p className="text-gray-600 mb-6 max-w-md">
