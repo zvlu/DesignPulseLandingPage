@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp, FileText, BookOpen, Shield } from 'lucide-react';
-
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 const FAQPage: React.FC = () => {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
