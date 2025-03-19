@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser'; // Import EmailJS
@@ -11,7 +11,9 @@ const ContactPage: React.FC = () => {
     company: '',
     message: '',
   });
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
