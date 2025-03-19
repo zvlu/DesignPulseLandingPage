@@ -19,13 +19,11 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // EmailJS configuration
-    const serviceID = 'service_sllb5ap'; // Replace with your EmailJS Service ID
-    const templateID = 'template_iotur0d'; // Replace with your EmailJS Template ID
-    const userID = 'tCbIgYuoG2E3RcDwT'; // Replace with your EmailJS User ID
-
-    // Send email using EmailJS
+  
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const userID = import.meta.env.VITE_EMAILJS_USER_ID;
+  
     emailjs.send(serviceID, templateID, {
       name: formData.name,
       email: formData.email,
