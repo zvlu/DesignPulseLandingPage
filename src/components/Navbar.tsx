@@ -27,6 +27,12 @@ const Navbar: React.FC = () => {
   };
   const togglePortfolio = () => setIsPortfolioOpen(!isPortfolioOpen);
 
+  // New handler to close dropdown and menu on portfolio item click
+  const handlePortfolioClick = () => {
+    setIsPortfolioOpen(false); // Close dropdown
+    setIsMenuOpen(false); // Close mobile menu (if open)
+  };
+
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
@@ -59,13 +65,13 @@ const Navbar: React.FC = () => {
             <img
               src={DesignPulseLogo}
               alt="DesignPulse Studio Logo"
-              className="h-28 w-28" // Your current size
+              className="h-28 w-28"
             />
             <span
               className="text-xl font-semibold text-gray-900 tracking-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
-              
+              {/* Empty span as per your code */}
             </span>
           </NavLink>
 
@@ -114,6 +120,7 @@ const Navbar: React.FC = () => {
                               : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                           } transition-colors duration-200`
                         }
+                        onClick={handlePortfolioClick} // Close dropdown on click
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
                         {icon}
@@ -195,7 +202,7 @@ const Navbar: React.FC = () => {
                               : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                           } transition-colors duration-200`
                         }
-                        onClick={closeMenu}
+                        onClick={handlePortfolioClick} // Close dropdown and menu on click
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                       >
                         {icon}

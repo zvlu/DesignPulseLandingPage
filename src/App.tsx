@@ -19,6 +19,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import DocumentationPage from './pages/DocumentationPage';
 import HelpCenterPage from './pages/HelpCenterPage';
 import FAQPage from './pages/FAQPage';
+import NotFoundPage from './pages/NotFoundPage'; // Add this
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="help" element={<HelpCenterPage />} />
         <Route path="faq" element={<FAQPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} /> {/* Add this */}
     </Routes>
   );
 }
