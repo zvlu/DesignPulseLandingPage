@@ -152,12 +152,12 @@ const AboutPage: React.FC = () => {
             {/* Team Member 1 */}
             <div className="bg-white rounded-xl overflow-hidden shadow-sm text-center">
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80" 
+                src="/TEAMCEOLOGO.jpg" 
                 alt="Team Member" 
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Alex Johnson</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Eric King</h3>
                 <p className="text-primary-600 mb-4">Founder & Creative Director</p>
                 <p className="text-gray-600">
                   With over 15 years of experience in design and branding.

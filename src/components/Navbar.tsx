@@ -39,38 +39,18 @@ const Navbar: React.FC = () => {
   ];
 
   const portfolioLinks = [
-    {
-      to: '/cloudpeak',
-      label: 'CloudPeak',
-      icon: <Cloud className="h-4 w-4 mr-1" />,
-    },
-    {
-      to: '/taskflow',
-      label: 'TaskFlow',
-      icon: <CheckSquare className="h-4 w-4 mr-1" />,
-    },
-    {
-      to: '/sonicpulse',
-      label: 'SonicPulse',
-      icon: <Headphones className="h-4 w-4 mr-1" />,
-    },
-    {
-      to: '/fitcore',
-      label: 'FitCore',
-      icon: <Activity className="h-4 w-4 mr-1" />,
-    },
-    {
-      to: '/greenleaf',
-      label: 'GreenLeaf',
-      icon: <Leaf className="h-4 w-4 mr-1" />,
-    },
+    { to: '/cloudpeak', label: 'CloudPeak', icon: <Cloud className="h-4 w-4 mr-1" /> },
+    { to: '/taskflow', label: 'TaskFlow', icon: <CheckSquare className="h-4 w-4 mr-1" /> },
+    { to: '/sonicpulse', label: 'SonicPulse', icon: <Headphones className="h-4 w-4 mr-1" /> },
+    { to: '/fitcore', label: 'FitCore', icon: <Activity className="h-4 w-4 mr-1" /> },
+    { to: '/greenleaf', label: 'GreenLeaf', icon: <Leaf className="h-4 w-4 mr-1" /> },
   ];
 
   return (
     <header className="bg-white shadow-md shadow-gray-100/50 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo and Site Name */}
           <NavLink
             to="/"
             className="flex items-center space-x-2"
@@ -85,7 +65,7 @@ const Navbar: React.FC = () => {
               className="text-xl font-semibold text-gray-900 tracking-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
-              {/* DesignPulse Studio */}
+              
             </span>
           </NavLink>
 
@@ -146,10 +126,10 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA - Links to Contact Page */}
+          {/* Desktop CTA */}
           <div className="hidden md:block">
             <Link
-              to="/contact" // Already set to contact page
+              to="/contact"
               className="inline-flex items-center px-4 py-2 bg-gray-800 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors duration-200 shadow-sm"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
@@ -163,11 +143,7 @@ const Navbar: React.FC = () => {
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -230,10 +206,9 @@ const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            {/* Mobile CTA - Links to Contact Page */}
             <div className="pt-4">
               <Link
-                to="/contact" // Already set to contact page
+                to="/contact"
                 className="block w-full text-center py-2 bg-gray-800 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition-colors duration-200"
                 onClick={closeMenu}
                 style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -249,14 +224,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-// Add to global CSS (e.g., index.css)
-const styles = `
-  @keyframes slideIn {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  .animate-slide-in {
-    animation: slideIn 0.3s ease-out forwards;
-  }
-`;
