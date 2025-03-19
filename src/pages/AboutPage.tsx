@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Award, Zap, Lightbulb, Clock, Palette } from 'lucide-react';
+import {  Award, Zap, Lightbulb, Clock, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AboutPage: React.FC = () => {
