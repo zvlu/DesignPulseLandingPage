@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
-
 const PortfolioPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures it runs only on mount
   const projects = [
     {
       id: 1,

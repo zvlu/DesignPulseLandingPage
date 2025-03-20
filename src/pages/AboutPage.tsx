@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import {  Award, Zap, Lightbulb, Clock, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
-
 const AboutPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures it runs only on mount
   const coreStrengths = [
     {
       title: 'Creative Excellence',

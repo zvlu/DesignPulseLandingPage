@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { Zap, Shield, Users, BarChart2, Clock, Globe, Database, Layers, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
-
 const FeaturesPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures it runs only on mount
   return (
     <>
       {/* Hero Section */}

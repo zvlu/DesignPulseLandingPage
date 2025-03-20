@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Check, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
-
-
 const PricingPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures it runs only on mount
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (

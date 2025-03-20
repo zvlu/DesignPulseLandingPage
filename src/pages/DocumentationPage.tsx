@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Code, Settings, ArrowRight, CheckCircle, HelpCircle, Zap } from 'lucide-react';
+import { useEffect } from 'react';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
 
 const DocumentationPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('getting-started');
 
-  return (
-    <>
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []); // Empty dependency array ensures it runs only on mount
+return (
+  <>
       {/* Hero Section */}
       <section style={{ backgroundColor: '#003366' }} className="text-white">
         <div className="container mx-auto px-4 py-16 md:py-24">
@@ -531,3 +532,5 @@ const DocumentationPage: React.FC = () => {
 };
 
 export default DocumentationPage;
+
+

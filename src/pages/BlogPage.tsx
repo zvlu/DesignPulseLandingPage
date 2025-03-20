@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { ArrowRight, Search, Calendar, Tag, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
+// useEffect(() => {
+//   window.scrollTo(0, 0);
+// }, []); // Empty dependency array ensures it runs only on mount
 
 const BlogPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');

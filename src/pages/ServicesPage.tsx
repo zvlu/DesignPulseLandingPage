@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { Layout, Layers, Palette, FileText, Settings, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []); // Empty dependency array ensures it runs only on mount
-
 const ServicesPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures it runs only on mount
   const services = [
     {
       id: 'landing-page',
