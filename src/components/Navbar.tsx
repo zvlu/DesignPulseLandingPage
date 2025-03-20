@@ -42,6 +42,7 @@ const Navbar: React.FC = () => {
     { to: '/pricing', label: 'Pricing' },
     { to: '/faq', label: 'FAQ' },
     { to: '/contact', label: 'Contact' },
+    { to: '/internal-training', label: 'Training', icon: <BookOpen className="h-4 w-4 mr-1" /> }, // New Training tab
   ];
 
   const portfolioLinks = [
@@ -199,7 +200,7 @@ const Navbar: React.FC = () => {
                           `flex items-center py-2 px-3 text-sm font-medium ${
                             isActive
                               ? 'text-gray-900 bg-gray-100 rounded-md'
-                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                           } transition-colors duration-200`
                         }
                         onClick={handlePortfolioClick} // Close dropdown and menu on click

@@ -19,7 +19,8 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import DocumentationPage from './pages/DocumentationPage';
 import HelpCenterPage from './pages/HelpCenterPage';
 import FAQPage from './pages/FAQPage';
-import NotFoundPage from './pages/NotFoundPage'; // Add this
+import NotFoundPage from './pages/NotFoundPage';
+import InternalTrainingPage from './pages/InternalTrainingPage'; // Add this
 
 function App() {
   return (
@@ -43,8 +44,9 @@ function App() {
         <Route path="documentation" element={<DocumentationPage />} />
         <Route path="help" element={<HelpCenterPage />} />
         <Route path="faq" element={<FAQPage />} />
+        <Route path="internal-training" element={<InternalTrainingPage />} /> {/* Add this */}
       </Route>
-      <Route path="*" element={<NotFoundPage />} /> {/* Add this */}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
