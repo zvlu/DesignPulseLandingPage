@@ -20,7 +20,7 @@ const ContactPage: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  };   
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +28,10 @@ const ContactPage: React.FC = () => {
     const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const userID = import.meta.env.VITE_EMAILJS_USER_ID;
-  
+    console.log('Service ID:', serviceID);
+    console.log('Template ID:', templateID);
+    console.log('User ID:', userID);
+    
     emailjs.send(serviceID, templateID, {
       name: formData.name,
       email: formData.email,
@@ -208,9 +211,15 @@ const ContactPage: React.FC = () => {
             {/* Map */}
             <div>
               <div className="bg-gray-200 rounded-xl overflow-hidden h-full min-h-[400px] relative">
-                <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-                  <p className="text-gray-600">Interactive map would be displayed here</p>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23807.096471360615!2d-72.69908480000001!3d41.766092799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1742480045506!5m2!1sen!2sus"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </div>
