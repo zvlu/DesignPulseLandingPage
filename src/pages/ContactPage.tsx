@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, MessageSquare, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser'; // Import EmailJS
+import emailjs from '@emailjs/browser';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'; // Add Google Maps imports
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,16 +16,32 @@ const ContactPage: React.FC = () => {
   // Scroll to top when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []); // Empty dependency array ensures it runs only on mount
+  }, []);
+
+  // Load Google Maps API
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+  });
+
+  const mapContainerStyle = {
+    width: '100%',
+    height: '400px',
+  };
+
+  // Center on West Hartford, CT (adjust as needed)
+  const center = {
+    lat: 41.766,
+    lng: -72.699,
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };   
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  
     const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const userID = import.meta.env.VITE_EMAILJS_USER_ID;
@@ -61,9 +78,7 @@ const ContactPage: React.FC = () => {
       <section className="bg-primary-600 text-white">
         <div className="container section">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="heading-xl mb-6">
-              Get in Touch
-            </h1>
+            <h1 className="heading-xl mb-6">Get in Touch</h1>
             <p className="text-xl text-primary-100 mb-8">
               Have questions or ready to get started? Our team is here to help you find the perfect solution for your business.
             </p>
@@ -81,9 +96,7 @@ const ContactPage: React.FC = () => {
                 <Mail className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Email Us</h3>
-              <p className="text-gray-600 mb-4">
-                Our friendly team is here to help.
-              </p>
+              <p className="text-gray-600 mb-4">Our friendly team is here to help.</p>
               <a href="mailto:info@designpulse.com" className="text-primary-600 font-medium hover:text-primary-700">
                 zvluwork@gmail.com
               </a>
@@ -95,9 +108,7 @@ const ContactPage: React.FC = () => {
                 <Phone className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Call Us</h3>
-              <p className="text-gray-600 mb-4">
-                Mon-Fri from 8am to 5pm.
-              </p>
+              <p className="text-gray-600 mb-4">Mon-Fri from 8am to 5pm.</p>
               <a href="tel:+18603710882" className="text-primary-600 font-medium hover:text-primary-700">
                 +1 (860) 371-0882
               </a>
@@ -109,12 +120,8 @@ const ContactPage: React.FC = () => {
                 <MapPin className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Visit Us</h3>
-              <p className="text-gray-600 mb-4">
-                
-              </p>
-              <p className="text-primary-600 font-medium">
-                Connecticut
-              </p>
+              <p className="text-gray-600 mb-4"></p>
+              <p className="text-primary-600 font-medium">Connecticut</p>
             </div>
           </div>
 
@@ -130,9 +137,7 @@ const ContactPage: React.FC = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Full Name
-                      </label>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                       <input
                         type="text"
                         id="name"
@@ -144,9 +149,7 @@ const ContactPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
-                      </label>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                       <input
                         type="email"
                         id="email"
@@ -158,9 +161,7 @@ const ContactPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number
-                      </label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                       <input
                         type="tel"
                         id="phone"
@@ -171,9 +172,7 @@ const ContactPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                        Company Name
-                      </label>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
                       <input
                         type="text"
                         id="company"
@@ -185,9 +184,7 @@ const ContactPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="mb-6">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                     <textarea
                       id="message"
                       name="message"
@@ -208,18 +205,31 @@ const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Map */}
+            {/* Interactive Map */}
             <div>
               <div className="bg-gray-200 rounded-xl overflow-hidden h-full min-h-[400px] relative">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d23807.096471360615!2d-72.69908480000001!3d41.766092799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1742480045506!5m2!1sen!2sus"
-                  width="100%"
-                  height="400"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                {isLoaded ? (
+                  <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={center}
+                    zoom={12} // Adjust zoom level as needed
+                    options={{
+                      gestureHandling: 'greedy', // Allows one-finger drag on mobile
+                      zoomControl: true, // Enables zoom buttons
+                      mapTypeControl: false, // Hides map/satellite toggle
+                      streetViewControl: false, // Disables street view
+                    }}
+                  >
+                    <Marker
+                      position={center}
+                      onClick={() => alert('Design Pulse Studio - West Hartford, CT')}
+                    />
+                  </GoogleMap>
+                ) : (
+                  <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
+                    <p className="text-gray-600">Loading map...</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -230,14 +240,9 @@ const ContactPage: React.FC = () => {
       <section className="bg-gray-50">
         <div className="container section">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="heading-lg text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Find quick answers to common questions.
-            </p>
+            <h2 className="heading-lg text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-600">Find quick answers to common questions.</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">How quickly will you respond to my inquiry?</h3>
@@ -271,9 +276,7 @@ const ContactPage: React.FC = () => {
       <section className="bg-primary-600">
         <div className="container section">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="heading-lg text-white mb-6">
-              Ready to Transform Your Business?
-            </h2>
+            <h2 className="heading-lg text-white mb-6">Ready to Transform Your Business?</h2>
             <p className="text-xl text-primary-100 mb-8">
               Join thousands of businesses that have already experienced the power of our platform.
             </p>
